@@ -20,7 +20,7 @@ public:
 
 protected:
 
-	virtual void BeginPlay() override;
+	virtual void BeginPlay() override;//构造函数在头文件写
 
 
 };

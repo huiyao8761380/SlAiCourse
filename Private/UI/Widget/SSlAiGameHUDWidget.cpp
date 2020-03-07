@@ -26,14 +26,14 @@ void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
 	UIScaler.Bind(this, &SSlAiGameHUDWidget::GetUIScaler);
 
 
-	ChildSlot
-		[
-			SNew(SDPIScaler)
+	ChildSlot//å±‚çº§
+		[//é‡è½½è¿ç®—ç¬¦
+			SNew(SDPIScaler)//åˆ¶ä½œäº†ä¸ªå¤§æŒ‰é’® SNewè¿”å›çš„æ˜¯Tsharedçš„å¼•ç”¨:TSharedRef<SButton> MyButton = SNew(SButton);
 			.DPIScale(UIScaler)
 		[
 			SNew(SOverlay)
 
-			//¿ì½İÀ¸
+			//å¿«æ·æ 
 		+ SOverlay::Slot()
 		.HAlign(HAlign_Center)
 		.VAlign(VAlign_Bottom)
@@ -42,7 +42,7 @@ void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
 		]
 
 
-	//ÉäÏßĞÅÏ¢
+	//å°„çº¿ä¿¡æ¯
 	+SOverlay::Slot()
 		.HAlign(HAlign_Center)
 		.VAlign(VAlign_Top)
@@ -51,7 +51,7 @@ void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
 		]
 
 
-	//×¼ĞÇ
+	//å‡†æ˜Ÿ
 	+SOverlay::Slot()
 		.HAlign(HAlign_Center)
 		.VAlign(VAlign_Center)
@@ -59,7 +59,7 @@ void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
 			SAssignNew(PointerWidget, SSlAiPointerWidget)
 		]
 
-	//Íæ¼Ò×´Ì¬
+	//ç©å®¶çŠ¶æ€
 	+ SOverlay::Slot()
 		.HAlign(HAlign_Left)
 		.VAlign(VAlign_Top)
@@ -67,7 +67,7 @@ void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
 			SAssignNew(PlayerStateWidget, SSlAiPlayerStateWidget)
 		]
 
-	//Ğ¡µØÍ¼
+	//å°åœ°å›¾
 	+ SOverlay::Slot()
 		.HAlign(HAlign_Right)
 		.VAlign(VAlign_Top)
@@ -76,7 +76,7 @@ void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
 		]
 
 
-	//ÁÄÌìÏÔÊ¾À¸
+	//èŠå¤©æ˜¾ç¤ºæ 
 	+SOverlay::Slot()
 		.HAlign(HAlign_Left)
 		.VAlign(VAlign_Bottom)
@@ -87,15 +87,15 @@ void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
 
 
 
-	//°µºÚÉ«ÕÚÕÖ,·ÅÔÚÊÂ¼ş½çÃæºÍÓÎÏ·UIÖĞ¼ä
+	//æš—é»‘è‰²é®ç½©,æ”¾åœ¨äº‹ä»¶ç•Œé¢å’Œæ¸¸æˆUIä¸­é—´
 	+SOverlay::Slot()
 		.HAlign(HAlign_Fill)
 		.VAlign(VAlign_Fill)
 		[
 			SAssignNew(BlackShade, SBorder)
-			//ÉèÖÃÎªºÚÉ«Í¸Ã÷
+			//è®¾ç½®ä¸ºé»‘è‰²é€æ˜
 		.ColorAndOpacity(TAttribute<FLinearColor>(FLinearColor(0.2f, 0.2f, 0.2f, 0.5f)))
-		//¿ªÊ¼Ê±ÉèÖÃ²»ÏÔÊ¾
+		//å¼€å§‹æ—¶è®¾ç½®ä¸æ˜¾ç¤º
 		.Visibility(EVisibility::Hidden)
 		[
 			SNew(SImage)
@@ -127,7 +127,7 @@ void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
 		.VAlign(VAlign_Fill)
 		[
 			SAssignNew(PackageWidget, SSlAiPackageWidget)
-			//ÉèÖÃDPI
+			//è®¾ç½®DPI
 		.UIScaler(UIScaler)
 		.Visibility(EVisibility::Hidden)
 		]
@@ -146,7 +146,7 @@ void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
 void SSlAiGameHUDWidget::Tick(const FGeometry& AllottedGeometry, const double InCurrentTime, const float InDeltaTime)
 {
 
-	//Ã¿ÎåÃë²åÈëÒ»ÌõĞÅÏ¢
+	//æ¯äº”ç§’æ’å…¥ä¸€æ¡ä¿¡æ¯
 	if (MessageTimeCount < 5.f) {
 		MessageTimeCount += InDeltaTime;
 	}
@@ -168,30 +168,30 @@ float SSlAiGameHUDWidget::GetUIScaler() const
 
 void SSlAiGameHUDWidget::ShowGameUI(EGameUIType::Type PreUI, EGameUIType::Type NextUI)
 {
-	//Èç¹ûÇ°Ò»Ä£Ê½ÊÇGame,ËµÃ÷ÒªÏÔÊ¾ºÚ°å
+	//å¦‚æœå‰ä¸€æ¨¡å¼æ˜¯Game,è¯´æ˜è¦æ˜¾ç¤ºé»‘æ¿
 	if (PreUI == EGameUIType::Game)
 	{
 		BlackShade->SetVisibility(EVisibility::Visible);
 	}
 	else
 	{
-		//Òş²Øµ±Ç°ÕıÔÚÏÔÊ¾µÄUI
+		//éšè—å½“å‰æ­£åœ¨æ˜¾ç¤ºçš„UI
 		UIMap.Find(PreUI)->Get()->SetVisibility(EVisibility::Hidden);
 	}
-	//Èç¹ûÏÂÒ»Ä£Ê½ÊÇGame,Òş²ØºÚ°å
+	//å¦‚æœä¸‹ä¸€æ¨¡å¼æ˜¯Game,éšè—é»‘æ¿
 	if (NextUI == EGameUIType::Game)
 	{
 		BlackShade->SetVisibility(EVisibility::Hidden);
 	}
 	else
 	{
-		//ÏÔÊ¾ÏÖÔÚ×´Ì¬¶ÔÓ¦µÄUI
+		//æ˜¾ç¤ºç°åœ¨çŠ¶æ€å¯¹åº”çš„UI
 		UIMap.Find(NextUI)->Get()->SetVisibility(EVisibility::Visible);
-		//ÏÔÊ¾ÏÖÔÚ×´Ì¬¶ÔÓ¦µÄUI
+		//æ˜¾ç¤ºç°åœ¨çŠ¶æ€å¯¹åº”çš„UI
 		if (NextUI == EGameUIType::ChatRoom) ChatRoomWidget->ScrollToEnd();
-		//Èç¹ûÊÇÊ§°Ü,Ö»ÏÔÊ¾Ò»¸ö°´Å¥
+		//å¦‚æœæ˜¯å¤±è´¥,åªæ˜¾ç¤ºä¸€ä¸ªæŒ‰é’®
 		if (NextUI == EGameUIType::Lose) GameMenuWidget->GameLose();
-		//Èç¹ûÊÇ²Ëµ¥,ÉèÖÃ²Ëµ¥³õÊ¼»¯
+		//å¦‚æœæ˜¯èœå•,è®¾ç½®èœå•åˆå§‹åŒ–
 		if (NextUI == EGameUIType::Pause) GameMenuWidget->ResetMenu();
 	}
 
@@ -213,8 +213,8 @@ void SSlAiGameHUDWidget::InitUIMap()
 	UIMap.Add(EGameUIType::ChatRoom, ChatRoomWidget);
 	UIMap.Add(EGameUIType::Lose, GameMenuWidget);
 
-	//°ó¶¨Î¯ÍĞ
+	//ç»‘å®šå§”æ‰˜
 	ChatRoomWidget->PushMessage.BindRaw(ChatShowWidget.Get(), &SSlAiChatShowWidget::AddMessage);
-	//ÏûÏ¢¼ÆÊ±Æ÷³õÊ¼ÉèÖÃÎª0
+	//æ¶ˆæ¯è®¡æ—¶å™¨åˆå§‹è®¾ç½®ä¸º0
 	MessageTimeCount = 0.f;
 }

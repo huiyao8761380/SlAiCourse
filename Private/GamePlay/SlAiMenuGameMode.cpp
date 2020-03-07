@@ -11,7 +11,7 @@
 
 ASlAiMenuGameMode::ASlAiMenuGameMode()
 {
-	PlayerControllerClass = ASlAiMenuController::StaticClass();
+	PlayerControllerClass = ASlAiMenuController::StaticClass();//1 UE4自己创建的反射
 	HUDClass = ASlAiMenuHUD::StaticClass();
 }
 
