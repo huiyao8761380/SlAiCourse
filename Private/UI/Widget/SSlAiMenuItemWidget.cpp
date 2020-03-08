@@ -11,10 +11,10 @@
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiMenuItemWidget::Construct(const FArguments& InArgs)
 {
-	//��ȡMenuStyle
-	MenuStyle = &SlAiStyle::Get().GetWidgetStyle<FSlAiMenuStyle>("BPSlAiMenuStyle");
+	//获取MenuStyle
+	MenuStyle = &SlAiStyle::Get().GetWidgetStyle<FSlAiMenuStyle>("BPSlAiMenuStyle");//每次写一编若觉得麻烦 FSlAiMenuStyle可以写成静态变量
 
-	OnClicked = InArgs._OnClicked;
+	OnClicked = InArgs._OnClicked;//加个下滑杠区分
 	ItemType = InArgs._ItemType.Get();
 
 	ChildSlot
@@ -48,7 +48,7 @@ void SSlAiMenuItemWidget::Construct(const FArguments& InArgs)
 
 		];
 
-	//��ʼ��
+	//初始化
 	IsMouseButtonDown = false;
 
 }
@@ -62,7 +62,7 @@ FReply SSlAiMenuItemWidget::OnMouseButtonDown(const FGeometry& MyGeometry, const
 
 FReply SSlAiMenuItemWidget::OnMouseButtonUp(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent)
 {
-	//�����ť�����˲���OnClickedί�а��з����Ǿ�ִ��
+	//如果按钮按下了并且OnClicked委托绑定有方法那就执行
 	if (IsMouseButtonDown)
 	{
 		IsMouseButtonDown = false;

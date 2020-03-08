@@ -11,14 +11,14 @@
  * 
  */
 
-UENUM()
+UENUM()//è“å›¾èƒ½è¯†åˆ«çš„æšä¸¾
 enum class ECultureTeam : uint8 {
 	EN = 0,
 	ZH
 };
 
 
-//Menu°´Å¥µÄÀàĞÍ
+//MenuæŒ‰é’®çš„ç±»å‹
 namespace EMenuItem
 {
 	enum Type
@@ -39,7 +39,7 @@ namespace EMenuItem
 }
 
 
-//Menu½çÃæÀàĞÍ
+//Menuç•Œé¢ç±»å‹
 namespace EMenuType
 {
 	enum Type
@@ -53,18 +53,18 @@ namespace EMenuType
 	};
 }
 
-//Menu¶¯»­×´Ì¬Ã¶¾Ù
+//MenuåŠ¨ç”»çŠ¶æ€æšä¸¾
 namespace EMenuAnim
 {
 	enum Type 
 	{
-		Stop, //Í£Ö¹¶¯»­
-		Close, //¹Ø±ÕMenu
-		Open  //´ò¿ªMenu
+		Stop, //åœæ­¢åŠ¨ç”»
+		Close, //å…³é—­Menu
+		Open  //æ‰“å¼€Menu
 	};
 }
 
-//ÊÓ½ÇÄ£Ê½
+//è§†è§’æ¨¡å¼
 namespace EGameViewMode {
 	enum Type
 	{
@@ -74,7 +74,7 @@ namespace EGameViewMode {
 }
 
 
-//ÉÏ°ëÉí¶¯»­µÄ×´Ì¬
+//ä¸ŠåŠèº«åŠ¨ç”»çš„çŠ¶æ€
 namespace EUpperBody
 {
 	enum Type
@@ -89,31 +89,31 @@ namespace EUpperBody
 }
 
 
-//ÎïÆ·ÀàĞÍ
+//ç‰©å“ç±»å‹
 namespace EObjectType
 {
 	enum Type
 	{
-		Normal = 0,//ÆÕÍ¨ÎïÆ·,Ä¾Í·,Ê¯Í·
-		Food,//Ê³Îï,Æ»¹û,Èâ
-		Tool,//¹¤¾ß,´¸×Ó,¸«×Ó
-		Weapon//ÎäÆ÷,½£
+		Normal = 0,//æ™®é€šç‰©å“,æœ¨å¤´,çŸ³å¤´
+		Food,//é£Ÿç‰©,è‹¹æœ,è‚‰
+		Tool,//å·¥å…·,é”¤å­,æ–§å­
+		Weapon//æ­¦å™¨,å‰‘
 	};
 }
 
 
-//ÎïÆ·ÊôĞÔ½á¹¹Ìå
+//ç‰©å“å±æ€§ç»“æ„ä½“
 struct ObjectAttribute
 {
-	FText EN;//Ó¢ÎÄÃû
-	FText ZH;//ÖĞÎÄÃû
-	EObjectType::Type ObjectType;//ÎïÆ·ÀàĞÍ
-	int PlantAttack;//¶ÔÖ²ÎïµÄ¹¥»÷Á¦
-	int MetalAttcck;//¶Ô½ğÊô×ÊÔ´µÄ¹¥»÷Á¦
-	int AnimalAttack;//¶Ô¶¯ÎïµÄ¹¥»÷Á¦
-	int AffectRange;//¹¥»÷¾àÀë
-	FString TexPath;//Í¼Æ¬Â·¾¶
-	//¹¹Ôìº¯Êı
+	FText EN;//è‹±æ–‡å
+	FText ZH;//ä¸­æ–‡å
+	EObjectType::Type ObjectType;//ç‰©å“ç±»å‹
+	int PlantAttack;//å¯¹æ¤ç‰©çš„æ”»å‡»åŠ›
+	int MetalAttcck;//å¯¹é‡‘å±èµ„æºçš„æ”»å‡»åŠ›
+	int AnimalAttack;//å¯¹åŠ¨ç‰©çš„æ”»å‡»åŠ›
+	int AffectRange;//æ”»å‡»è·ç¦»
+	FString TexPath;//å›¾ç‰‡è·¯å¾„
+	//æ„é€ å‡½æ•°
 	ObjectAttribute(const FText ENName, const FText ZHName, const EObjectType::Type OT, const int PA, const int MA, const int AA, const int AR, const FString TP) {
 		EN = ENName;
 		ZH = ZHName;
@@ -128,10 +128,10 @@ struct ObjectAttribute
 };
 
 
-//¿ì½İÀ¸ÈİÆ÷½á¹¹Ìå
+//å¿«æ·æ å®¹å™¨ç»“æ„ä½“
 struct ShortcutContainer
 {
-	//ÎïÆ·ID
+	//ç‰©å“ID
 	int ObjectIndex;
 	int ObjectNum;
 	TSharedPtr<SBorder> ContainerBorder;
@@ -150,14 +150,14 @@ struct ShortcutContainer
 		ChoosedContainerBrush = CCB;
 		ObjectBrushList = OBL;
 
-		//³õÊ¼»¯ÏÔÊ¾ÉèÖÃ
+		//åˆå§‹åŒ–æ˜¾ç¤ºè®¾ç½®
 		ObjectIndex = 0;
 		ObjectNum = 0;
 		ContainerBorder->SetBorderImage(NormalContainerBrush);
 		ObjectImage->SetBorderImage((*ObjectBrushList)[0]);
 	}
 
-	//ÉèÖÃÊÇ·ñÑ¡ÖĞµ±Ç°µÄÎïÆ·,true¾ÍÊÇÒªÑ¡ÖĞ,·µ»ØÎïÆ·ÀàĞÍ
+	//è®¾ç½®æ˜¯å¦é€‰ä¸­å½“å‰çš„ç‰©å“,trueå°±æ˜¯è¦é€‰ä¸­,è¿”å›ç‰©å“ç±»å‹
 	int SetChoosed(bool Option) {
 		if (Option)
 		{
@@ -169,17 +169,17 @@ struct ShortcutContainer
 		return ObjectIndex;
 	}
 
-	//ÉèÖÃIndex
+	//è®¾ç½®Index
 	ShortcutContainer* SetObject(int NewIndex) {
 		ObjectIndex = NewIndex;
 		ObjectImage->SetBorderImage((*ObjectBrushList)[ObjectIndex]);
 		return this;
 	}
 
-	//ÉèÖÃÊıÁ¿
+	//è®¾ç½®æ•°é‡
 	ShortcutContainer* SetObjectNum(int Num = 0) {
 		ObjectNum = Num;
-		//Èç¹ûÊıÁ¿Îª0»òÕß1,²»ÏÔÊ¾Êı×Ö
+		//å¦‚æœæ•°é‡ä¸º0æˆ–è€…1,ä¸æ˜¾ç¤ºæ•°å­—
 		if (ObjectNum == 0 || ObjectNum == 1) {
 			ObjectNumText->SetText(FString(""));
 		}
@@ -194,7 +194,7 @@ struct ShortcutContainer
 
 
 
-//×ÊÔ´ÀàĞÍ
+//èµ„æºç±»å‹
 namespace EResourceType {
 	enum Type
 	{
@@ -205,11 +205,11 @@ namespace EResourceType {
 }
 
 
-//×ÊÔ´ÊôĞÔ½á¹¹Ìå
+//èµ„æºå±æ€§ç»“æ„ä½“
 struct ResourceAttribute 
 {
-	FText EN;//Ó¢ÎÄÃû
-	FText ZH;//ÖĞÎÄÃû
+	FText EN;//è‹±æ–‡å
+	FText ZH;//ä¸­æ–‡å
 	EResourceType::Type ResourceType;
 	int HP;
 	TArray<TArray<int>> FlobObjectInfo;
@@ -220,7 +220,7 @@ struct ResourceAttribute
 		ResourceType = RT;
 		HP = HPValue;
 
-		//½«Êı×éÔªËØµü´ú½ø±¾µØÊı×é
+		//å°†æ•°ç»„å…ƒç´ è¿­ä»£è¿›æœ¬åœ°æ•°ç»„
 		for (TArray<TArray<int>>::TIterator It(*FOI); It; ++It) {
 			TArray<int> FlobObjectInfoItem;
 			for (TArray<int>::TIterator Ih(*It); Ih; ++Ih) {
@@ -234,49 +234,49 @@ struct ResourceAttribute
 };
 
 
-//Game½çÃæ·ÖÀà
+//Gameç•Œé¢åˆ†ç±»
 namespace EGameUIType
 {
 	enum Type 
 	{
-		Game,//ÓÎÏ·Ä£Ê½UI
-		Pause,//ÔİÍ£
-		Lose,//ÊäÁË,ËÀÍö
-		Package,//±³°ü
-		ChatRoom//ÁÄÌìÊÒ
+		Game,//æ¸¸æˆæ¨¡å¼UI
+		Pause,//æš‚åœ
+		Lose,//è¾“äº†,æ­»äº¡
+		Package,//èƒŒåŒ…
+		ChatRoom//èŠå¤©å®¤
 	};
 }
 
-//±³°üÈİÆ÷ÀàĞÍ
+//èƒŒåŒ…å®¹å™¨ç±»å‹
 namespace EContainerType
 {
 	enum Type
 	{
-		Output,//ºÏ³É±íÊä³ö
-		Input,//ºÏ³É±íÊäÈë
-		Normal,//ÆÕÍ¨ÈİÆ÷
-		Shortcut,//¿ì½İÀ¸ÈİÆ÷
+		Output,//åˆæˆè¡¨è¾“å‡º
+		Input,//åˆæˆè¡¨è¾“å…¥
+		Normal,//æ™®é€šå®¹å™¨
+		Shortcut,//å¿«æ·æ å®¹å™¨
 	};
 }
 
-//ºÏ³É±í½á¹¹Ìå
+//åˆæˆè¡¨ç»“æ„ä½“
 struct CompoundTable
 {
-	//ºÏ³ÉÍ¼
+	//åˆæˆå›¾
 	TArray<int> CompoundMap;
-	//¹¹Ôìº¯Êı
+	//æ„é€ å‡½æ•°
 	CompoundTable(TArray<int> *InsertMap) {
 		for (TArray<int>::TIterator It(*InsertMap); It; ++It) {
 			CompoundMap.Add(*It);
 		}
 	}
 
-	//¼ì²â·ûºÏ±íµÄÊä³öÎïÆ·IDºÍÊıÁ¿
+	//æ£€æµ‹ç¬¦åˆè¡¨çš„è¾“å‡ºç‰©å“IDå’Œæ•°é‡
 	void DetectTable(TArray<int>* IDMap, TArray<int>* NumMap, int& OutputID, int& OutputNum)
 	{
-		//ÏÈÄ¬ÈÏÉè¶¨Êä³öIDÎª±íÊä³öID
+		//å…ˆé»˜è®¤è®¾å®šè¾“å‡ºIDä¸ºè¡¨è¾“å‡ºID
 		int TempID = CompoundMap[9];
-		//ÏÈÉè¶¨Êä³öÊıÁ¿Îª64,Ò»µãÒ»µã¼õÈ¥
+		//å…ˆè®¾å®šè¾“å‡ºæ•°é‡ä¸º64,ä¸€ç‚¹ä¸€ç‚¹å‡å»
 		int TempNum = 64;
 		for (int i = 0; i < 9; ++i)
 		{
@@ -290,7 +290,7 @@ struct CompoundTable
 				break;
 			}
 		}
-		//Èç¹ûÊä³öID²»Îª¿Õ,¸üĞÂOutputÊı¾İ
+		//å¦‚æœè¾“å‡ºIDä¸ä¸ºç©º,æ›´æ–°Outputæ•°æ®
 		if (TempID != 0 && TempNum != 0) {
 			OutputID = TempID;
 			OutputNum = TempNum;
@@ -298,23 +298,23 @@ struct CompoundTable
 	}
 
 
-	//¸ù¾İÊäÈëµÄµÄÎïÆ·IDºÍÊä³öIDĞòÁĞÒÔ¼°Éú²úÊıÁ¿²éÑ¯³öÊÇ·ñÆ¥ÅäÕâ¸öºÏ³É±í²¢ÇÒÊä³öÏûºÄÊı×é
+	//æ ¹æ®è¾“å…¥çš„çš„ç‰©å“IDå’Œè¾“å‡ºIDåºåˆ—ä»¥åŠç”Ÿäº§æ•°é‡æŸ¥è¯¢å‡ºæ˜¯å¦åŒ¹é…è¿™ä¸ªåˆæˆè¡¨å¹¶ä¸”è¾“å‡ºæ¶ˆè€—æ•°ç»„
 	bool DetectExpend(TArray<int>* TableMap, int ProductNum, TArray<int>& ExpendMap)
 	{
-		//ÊÇ·ñÆ¥ÅäÕâ¸öºÏ³É±í,¿ªÊ¼ÉèÖÃÎªtrue
+		//æ˜¯å¦åŒ¹é…è¿™ä¸ªåˆæˆè¡¨,å¼€å§‹è®¾ç½®ä¸ºtrue
 		bool IsMatch = true;
 		for (int i = 0; i < 10; ++i) {
-			//Ö»ÒªÓĞÒ»¸ö²»·ûºÏ,Ö±½ÓÉèÖÃfalse
+			//åªè¦æœ‰ä¸€ä¸ªä¸ç¬¦åˆ,ç›´æ¥è®¾ç½®false
 			if ((*TableMap)[i] != CompoundMap[i])
 			{
 				IsMatch = false;
 				break;
 			}
 		}
-		//Èç¹ûÆ¥Åä
+		//å¦‚æœåŒ¹é…
 		if (IsMatch) {
 			for (int i = 0; i < 9; ++i) {
-				//Èç¹û²»Îª0,Ö±½ÓAddÉú²úµÄÊıÁ¿
+				//å¦‚æœä¸ä¸º0,ç›´æ¥Addç”Ÿäº§çš„æ•°é‡
 				if (CompoundMap[i] != 0) {
 					ExpendMap.Add(ProductNum);
 				}
@@ -323,7 +323,7 @@ struct CompoundTable
 				}
 			}
 		}
-		//·µ»ØÊÇ·ñÆ¥Åä
+		//è¿”å›æ˜¯å¦åŒ¹é…
 		return IsMatch;
 	}
 
@@ -332,7 +332,7 @@ struct CompoundTable
 
 
 
-//µĞÈËAI×´Ì¬
+//æ•ŒäººAIçŠ¶æ€
 UENUM(BlueprintType)
 enum  class EEnemyAIState : uint8
 {
@@ -348,7 +348,7 @@ enum  class EEnemyAIState : uint8
 
 
 
-//µĞÈË¹¥»÷×´Ì¬
+//æ•Œäººæ”»å‡»çŠ¶æ€
 UENUM(BlueprintType)
 enum class EEnemyAttackType : uint8
 {
@@ -358,7 +358,7 @@ enum class EEnemyAttackType : uint8
 };
 
 
-//Ğ¡µØÍ¼Ëõ·Å×´Ì¬
+//å°åœ°å›¾ç¼©æ”¾çŠ¶æ€
 namespace EMiniMapSizeMode
 {
 	enum Type

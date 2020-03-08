@@ -6,9 +6,9 @@
 #include "SlAiTypes.h"
 #include "Widgets/SCompoundWidget.h"
 
-
+//1定义委托 
 DECLARE_DELEGATE_OneParam(FItemClicked, const EMenuItem::Type)
-
+//创建MenuItemWidget 不是物品栏 是主界面插槽； 头文件不引用会冲突
 /**
  *
  */
@@ -19,7 +19,7 @@ public:
 	{}
 
 	SLATE_ATTRIBUTE(FText, ItemText)
-
+		//2写个事件的委托传进去 从SSlAiMenuWidget传入OnClicked 
 		SLATE_EVENT(FItemClicked, OnClicked)
 
 		SLATE_ATTRIBUTE(EMenuItem::Type, ItemType)
@@ -29,31 +29,31 @@ public:
 		/** Constructs this widget with InArgs */
 		void Construct(const FArguments& InArgs);
 
-	//��д�����OnMouseButtonDown����
-	virtual FReply OnMouseButtonDown(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent) override;
-	//��д��ť�����ķ���
+	//重写组件的OnMouseButtonDown方法
+	virtual FReply OnMouseButtonDown(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent) override;// 对应HUD蓝图里的Function
+	//重写按钮起来的方法
 	virtual FReply OnMouseButtonUp(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent) override;
-	//����뿪
-	virtual void OnMouseLeave(const FPointerEvent& MouseEvent) override;
+	//鼠标离开
+	virtual void OnMouseLeave(const FPointerEvent& MouseEvent) override;//在这里设置按钮的颜色
 
 
 private:
 
-	//��ȡ��ɫ
+	//获取颜色
 	FSlateColor GetTintColor() const;
 
 private:
 
 
-	//��ȡMenuStyle
+	//获取MenuStyle
 	const struct FSlAiMenuStyle *MenuStyle;
 
-	//�����¼�ί��
+	//3按下事件委托
 	FItemClicked OnClicked;
-	//���水ť����
+	//保存按钮类型
 	EMenuItem::Type ItemType;
 
-	//��ť�Ƿ��Ѿ�����
+	//按钮是否已经按下
 	bool IsMouseButtonDown;
 
 };

@@ -246,11 +246,11 @@ void SSlAiMenuWidget::InitializedMenuList()
 {
 
 	//实例化主界面
-	TArray<TSharedPtr<SCompoundWidget>> MainMenuList;
+	TArray<TSharedPtr<SCompoundWidget>> MainMenuList;//V按下则调用MenuItemOnClicked里的选择参数并调用
 	MainMenuList.Add(SNew(SSlAiMenuItemWidget).ItemText(NSLOCTEXT("SlAiMenu", "StartGame", "StartGame")).ItemType(EMenuItem::StartGame).OnClicked(this, &SSlAiMenuWidget::MenuItemOnClicked));
 	MainMenuList.Add(SNew(SSlAiMenuItemWidget).ItemText(NSLOCTEXT("SlAiMenu", "GameOption", "GameOption")).ItemType(EMenuItem::GameOption).OnClicked(this, &SSlAiMenuWidget::MenuItemOnClicked));
 	MainMenuList.Add(SNew(SSlAiMenuItemWidget).ItemText(NSLOCTEXT("SlAiMenu", "QuitGame", "QuitGame")).ItemType(EMenuItem::QuitGame).OnClicked(this, &SSlAiMenuWidget::MenuItemOnClicked));
-
+	//在主菜单添加MenuItemWidget 及 设置按钮
 	MenuMap.Add(EMenuType::MainMenu, MakeShareable(new MenuGroup(NSLOCTEXT("SlAiMenu", "Menu", "Menu"), 510.f, &MainMenuList)));
 
 
