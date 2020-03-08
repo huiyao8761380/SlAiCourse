@@ -10,7 +10,7 @@
 #include "SDPIScaler.h"
 #include "SSlAiMenuWidget.h"
 
-
+//创建一个Widget的HUD蓝图，本代码类似它 联动SlAiMenuWidgetStyle 在UE4里指定图片
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiMenuHUDWidget::Construct(const FArguments& InArgs)
@@ -22,7 +22,7 @@ void SSlAiMenuHUDWidget::Construct(const FArguments& InArgs)
 
 	ChildSlot
 		[
-			SNew(SDPIScaler)
+			SNew(SDPIScaler)//DPI窗口大小曲线
 			.DPIScale(UIScaler)
 		[
 			SNew(SOverlay)
@@ -32,7 +32,7 @@ void SSlAiMenuHUDWidget::Construct(const FArguments& InArgs)
 		.VAlign(VAlign_Fill)
 		[
 			SNew(SImage)
-			.Image(&MenuStyle->MenuHUDBackgroundBrush)//创建MenuStyleHUD在/Game/UI/Style路径（SlAiStyle）
+			.Image(&MenuStyle->MenuHUDBackgroundBrush)//创建MenuStyleHUD在/Game/UI/Style路径（SlAiStyle）在UE4里指定图片..
 		]
 
 	+ SOverlay::Slot()

@@ -36,7 +36,7 @@ struct SLAICOURSE_API FSlAiMenuStyle : public FSlateWidgetStyle
 		FSlateBrush MenuHUDBackgroundBrush;
 
 	/*
-	* 指定Menu的背景图片
+	* 指定Menu的背景图片 类似HUD蓝图的背景
 	*/
 	UPROPERTY(EditAnywhere, Category = Menu)
 		FSlateBrush MenuBackgroundBrush;
