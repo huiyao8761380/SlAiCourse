@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-
+//新建一个None class类的 SlAiSingleton c++文件
 /**
 *
 */
@@ -19,11 +19,11 @@ private:
 
 	static void Initialize();
 
-	static TSharedRef<T> Create();
+	static TSharedRef<T> Create();//共享的引用
 
 private:
 
-	static TSharedPtr<T> TInstance;
+	static TSharedPtr<T> TInstance;//单例的指针
 
 };
 
@@ -33,7 +33,7 @@ private:
 
 
 template<class T>
-TSharedPtr<T> SlAiSingleton<T>::TInstance = NULL;
+TSharedPtr<T> SlAiSingleton<T>::TInstance = NULL;//设置为null避免报错
 
 template<class T>
 TSharedRef<T> SlAiSingleton<T>::Create()

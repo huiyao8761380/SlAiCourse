@@ -10,7 +10,7 @@ SlAiJsonHandle::SlAiJsonHandle()
 	ResourceAttrFileName = FString("ResourceAttribute.json");
 	CompoundTableFileName = FString("CompoundTable.json");
 
-	RelativePath = FString("Res/ConfigData/");
+	RelativePath = FString("Res/ConfigData/");//ç»å¯¹è·¯å¾„ åœ¨è¿™
 
 }
 
@@ -23,11 +23,11 @@ void SlAiJsonHandle::RecordDataJsonRead(FString& Culture, float& MusicVolume, fl
 	TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(JsonValue);
 
 	if (FJsonSerializer::Deserialize(JsonReader, JsonParsed)) {
-		//»ñÈ¡Êı¾İ
+		//è·å–æ•°æ®
 		Culture = JsonParsed[0]->AsObject()->GetStringField(FString("Culture"));
 		MusicVolume = JsonParsed[1]->AsObject()->GetNumberField(FString("MusicVolume"));
 		SoundVolume = JsonParsed[2]->AsObject()->GetNumberField(FString("SoundVolume"));
-		//»ñÈ¡´æµµÊı¾İ
+		//è·å–å­˜æ¡£æ•°æ®
 		TArray<TSharedPtr<FJsonValue>> RecordDataArray = JsonParsed[3]->AsObject()->GetArrayField(FString("RecordData"));
 		for (int i = 0; i < RecordDataArray.Num(); ++i) {
 			FString RecordDataName = RecordDataArray[i]->AsObject()->GetStringField(FString::FromInt(i));
@@ -83,13 +83,13 @@ void SlAiJsonHandle::UpdateRecordData(FString Culture, float MusicVolume, float 
 
 	//SlAiHelper::Debug(FString("Origin Str : " + JsonStr), 60.f);
 
-	//È¥µô¶àÓà×Ö·û
+	//å»æ‰å¤šä½™å­—ç¬¦
 	JsonStr.RemoveAt(0, 8);
 	JsonStr.RemoveFromEnd(FString("}"));
 
 	//SlAiHelper::Debug(FString("Final Str : " + JsonStr), 60.f);
 
-	//Ğ´ÈëÎÄ¼ş
+	//å†™å…¥æ–‡ä»¶
 	WriteFileWithJsonData(JsonStr, RelativePath, RecordDataFileName);
 
 }
@@ -138,7 +138,7 @@ void SlAiJsonHandle::ResourceAttrJsonRead(TMap<int, TSharedPtr<ResourceAttribute
 	if (FJsonSerializer::Deserialize(JsonReader, JsonParsed))
 	{
 		for (int i = 0; i < JsonParsed.Num(); ++i) {
-			//×ÊÔ´Ã»ÓĞĞòºÅ0,´Ó1¿ªÊ¼
+			//èµ„æºæ²¡æœ‰åºå·0,ä»1å¼€å§‹
 			TArray<TSharedPtr<FJsonValue>> ResourceAttr = JsonParsed[i]->AsObject()->GetArrayField(FString::FromInt(i + 1));
 			FText EN = FText::FromString(ResourceAttr[0]->AsObject()->GetStringField("EN"));
 			FText ZH = FText::FromString(ResourceAttr[1]->AsObject()->GetStringField("ZH"));
@@ -215,7 +215,7 @@ void SlAiJsonHandle::CompoundTableJsonRead(TArray<TSharedPtr<CompoundTable>>& Co
 bool SlAiJsonHandle::LoadStringFromFile(const FString& FileName, const FString& RelaPath, FString& ResultString)
 {
 	if (!FileName.IsEmpty()) {
-		//»ñÈ¡¾ø¶ÔÂ·¾¶
+		//è·å–ç»å¯¹è·¯å¾„
 		FString AbsoPath = FPaths::GameContentDir() + RelaPath + FileName;
 		if (FPaths::FileExists(AbsoPath)) {
 			if (FFileHelper::LoadFileToString(ResultString, *AbsoPath))
@@ -223,12 +223,12 @@ bool SlAiJsonHandle::LoadStringFromFile(const FString& FileName, const FString& 
 				return true;
 			}
 			else {
-				//¼ÓÔØ²»³É¹¦
+				//åŠ è½½ä¸æˆåŠŸ
 				SlAiHelper::Debug(FString("Load Error") + AbsoPath);
 			}
 		}
 		else {
-			//Êä³öÎÄ¼ş²»´æÔÚ
+			//è¾“å‡ºæ–‡ä»¶ä¸å­˜åœ¨
 			SlAiHelper::Debug(FString("File Not Exist") + AbsoPath);
 		}
 	}
@@ -251,7 +251,7 @@ bool SlAiJsonHandle::WriteFileWithJsonData(const FString& JsonStr, const FString
 	if (!JsonStr.IsEmpty()) {
 		if (!FileName.IsEmpty()) {
 			FString AbsoPath = FPaths::GameContentDir() + RelaPath + FileName;
-			//±£´æ
+			//ä¿å­˜
 			if (FFileHelper::SaveStringToFile(JsonStr, *AbsoPath)) {
 
 				return true;

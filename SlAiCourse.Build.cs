@@ -15,7 +15,7 @@ public class SlAiCourse : ModuleRules
             "InputCore",
             "Slate",
             "SlateCore",
-            "Json",
+            "Json",//加json模块来保存菜单设置
             "JsonUtilities",
             "UMG",
             "AIModule",

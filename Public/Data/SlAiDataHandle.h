@@ -51,11 +51,11 @@ public:
 
 private:
 
-	//创建单例
+	//创建单例 又
 	static TSharedRef<SlAiDataHandle> Create();
 
 	//根据enum类型获取字符串
-	template<typename TEnum>
+	template<typename TEnum> //UE4 Uenum才行 普通枚举老老实实用switch；设置转换成string类型的代码在这
 	FString GetEnumValueAsString(const FString& Name, TEnum Value);
 
 	//根据字符串获取Enum值
