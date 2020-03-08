@@ -9,7 +9,7 @@
 #include "STextBlock.h"
 #include "SSlAiMenuItemWidget.h"
 #include "SBoxPanel.h"
-#include "SSlAiGameOptionWidget.h"
+#include "SSlAiGameOptionWidget.h"//然后GameOption导入这
 #include "SSlAiNewGameWidget.h"
 #include "SSlAiChooseRecordWidget.h"
 

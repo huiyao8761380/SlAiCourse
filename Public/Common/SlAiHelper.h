@@ -9,7 +9,7 @@
 #include "Engine/GameEngine.h"
 #include "SlateSound.h"
 #include "TimerManager.h"
-
+//在conmmon写个helper助手
 namespace SlAiHelper {
 
 	FORCEINLINE void Debug(FString Message, float Duration = 3.f) {
