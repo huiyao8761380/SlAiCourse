@@ -19,7 +19,7 @@
 #include "SlAiMenuController.h"
 #include "Kismet/GameplayStatics.h"
 
-
+//总菜单栏
 struct MenuGroup
 {
 	//菜单标题
@@ -59,7 +59,7 @@ void SSlAiMenuWidget::Construct(const FArguments& InArgs)
 
 				SNew(SOverlay)
 
-				+ SOverlay::Slot()
+				+ SOverlay::Slot()//这个slot相当于HUD右上角的xy轴调节等
 					.HAlign(HAlign_Fill)
 					.VAlign(VAlign_Fill)
 					.Padding(FMargin(0.f, 50.f, 0.f, 0.f))
