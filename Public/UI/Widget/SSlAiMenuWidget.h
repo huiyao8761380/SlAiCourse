@@ -14,7 +14,7 @@ struct MenuGroup;
 class SSlAiGameOptionWidget;
 class SSlAiNewGameWidget;
 class SSlAiChooseRecordWidget;
-
+//绑定事件都放在SSlAiMenuWidget 用到其他组件时 实例化别的方法在这给他添加进来 事件里面 重复调用
 /**
  *
  */
@@ -34,7 +34,7 @@ public:
 
 
 private:
-
+	
 	//绑定到各个MenuItem的方法
 	void MenuItemOnClicked(EMenuItem::Type ItemType);
 	//修改语言

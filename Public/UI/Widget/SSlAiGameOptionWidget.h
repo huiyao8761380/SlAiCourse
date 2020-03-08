@@ -12,9 +12,9 @@ class SSlider;
 class STextBlock;
 
 
-//ĞŞ¸ÄÖĞÓ¢ÎÄÎ¯ÍĞ
+//1ä¿®æ”¹ä¸­è‹±æ–‡å§”æ‰˜
 DECLARE_DELEGATE_OneParam(FChangeCulture, const ECultureTeam)
-//ĞŞ¸ÄÒôÁ¿Î¯ÍĞ
+//1ä¿®æ”¹éŸ³é‡å§”æ‰˜
 DECLARE_DELEGATE_TwoParams(FChangeVolume, const float, const float)
 /**
  * 
@@ -24,7 +24,7 @@ class SLAICOURSE_API SSlAiGameOptionWidget : public SCompoundWidget
 public:
 	SLATE_BEGIN_ARGS(SSlAiGameOptionWidget)
 	{}
-
+	//3å§”æ‰˜äº‹ä»¶
 	SLATE_EVENT(FChangeCulture, ChangeCulture)
 
 		SLATE_EVENT(FChangeVolume, ChangeVolume)
@@ -37,32 +37,32 @@ public:
 
 private:
 
-	//Í³Ò»ÉèÖÃÑùÊ½
+	//ç»Ÿä¸€è®¾ç½®æ ·å¼
 	void StyleInitialize();
 
-	//ÖĞÎÄCheckBoxÊÂ¼ş
+	//ä¸­æ–‡CheckBoxäº‹ä»¶
 	void ZhCheckBoxStateChanged(ECheckBoxState NewState);
-	//Ó¢ÎÄCheckBoxÊÂ¼ş
+	//è‹±æ–‡CheckBoxäº‹ä»¶
 	void EnCheckBoxStateChanged(ECheckBoxState NewState);
-	//ÒôÁ¿±ä»¯ÊÂ¼ş
+	//éŸ³é‡å˜åŒ–äº‹ä»¶
 	void MusicSliderChanged(float Value);
 	void SoundSliderChanged(float Value);
 
 private:
 
-	//»ñÈ¡MenuStyle
+	//è·å–MenuStyle
 	const struct FSlAiMenuStyle *MenuStyle;
-	//»ñÈ¡CheckBoxÖ¸Õë
+	//è·å–CheckBoxæŒ‡é’ˆ
 	TSharedPtr<SCheckBox> EnCheckBox;
 	TSharedPtr<SCheckBox> ZhCheckBox;
-	//Á½¸ö½ø¶ÈÌõ
-	TSharedPtr<SSlider> MuSlider;//±³¾°ÒôÀÖ
-	TSharedPtr<SSlider> SoSlider;//ÒôĞ§
-	//½ø¶ÈÌõ°Ù·Ö±È
+	//ä¸¤ä¸ªè¿›åº¦æ¡
+	TSharedPtr<SSlider> MuSlider;//èƒŒæ™¯éŸ³ä¹
+	TSharedPtr<SSlider> SoSlider;//éŸ³æ•ˆ
+	//è¿›åº¦æ¡ç™¾åˆ†æ¯”
 	TSharedPtr<STextBlock> MuTextBlock;
 	TSharedPtr<STextBlock> SoTextBlock;
 
-	//Î¯ÍĞ±äÁ¿
+	//3å§”æ‰˜å˜é‡
 	FChangeCulture ChangeCulture;
 	FChangeVolume ChangeVolume;
 };

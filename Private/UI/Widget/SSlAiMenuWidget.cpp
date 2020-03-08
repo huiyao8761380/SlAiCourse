@@ -234,12 +234,12 @@ void SSlAiMenuWidget::MenuItemOnClicked(EMenuItem::Type ItemType)
 
 void SSlAiMenuWidget::ChangeCulture(ECultureTeam Culture)
 {
-	SlAiDataHandle::Get()->ChangeLocalizationCulture(Culture);
+	SlAiDataHandle::Get()->ChangeLocalizationCulture(Culture);//6再写一遍方法
 }
 
 void SSlAiMenuWidget::ChangeVolume(const float MusicVolume, const float SoundVolume)
 {
-	SlAiDataHandle::Get()->ResetMenuVolume(MusicVolume, SoundVolume);
+	SlAiDataHandle::Get()->ResetMenuVolume(MusicVolume, SoundVolume);//6再写一遍方法
 }
 
 void SSlAiMenuWidget::InitializedMenuList()
@@ -267,7 +267,7 @@ void SSlAiMenuWidget::InitializedMenuList()
 	TArray<TSharedPtr<SCompoundWidget>> GameOptionList;
 	//实例化游戏设置的Widget
 	SAssignNew(GameOptionWidget, SSlAiGameOptionWidget)
-		.ChangeCulture(this, &SSlAiMenuWidget::ChangeCulture)
+		.ChangeCulture(this, &SSlAiMenuWidget::ChangeCulture)//7把MenuWidget里的方法绑定(互绑)到SSlAiGameOptionWidget逻辑 
 		.ChangeVolume(this, &SSlAiMenuWidget::ChangeVolume);
 	//添加控件到数组
 	GameOptionList.Add(GameOptionWidget);

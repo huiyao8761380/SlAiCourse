@@ -23,7 +23,7 @@ void SSlAiGameOptionWidget::Construct(const FArguments& InArgs)
 	//获取MenuStyle
 	MenuStyle = &SlAiStyle::Get().GetWidgetStyle<FSlAiMenuStyle>("BPSlAiMenuStyle");
 
-	//获取委托
+	//4获取委托
 	ChangeCulture = InArgs._ChangeCulture;
 	ChangeVolume = InArgs._ChangeVolume;
 
@@ -279,7 +279,7 @@ void SSlAiGameOptionWidget::ZhCheckBoxStateChanged(ECheckBoxState NewState)
 	ZhCheckBox->SetIsChecked(ECheckBoxState::Checked);
 	//告诉数据控制类转换为中文
 	//SlAiDataHandle::Get()->ChangeLocalizationCulture(ECultureTeam::ZH);
-	ChangeCulture.ExecuteIfBound(ECultureTeam::ZH);
+	ChangeCulture.ExecuteIfBound(ECultureTeam::ZH);//5运行委托
 }
 
 void SSlAiGameOptionWidget::EnCheckBoxStateChanged(ECheckBoxState NewState)
@@ -289,7 +289,7 @@ void SSlAiGameOptionWidget::EnCheckBoxStateChanged(ECheckBoxState NewState)
 	ZhCheckBox->SetIsChecked(ECheckBoxState::Unchecked);
 	//告诉数据控制类转换为英文
 	//SlAiDataHandle::Get()->ChangeLocalizationCulture(ECultureTeam::EN);
-	ChangeCulture.ExecuteIfBound(ECultureTeam::EN);
+	ChangeCulture.ExecuteIfBound(ECultureTeam::EN);//5运行委托
 }
 
 void SSlAiGameOptionWidget::MusicSliderChanged(float Value)
@@ -298,7 +298,7 @@ void SSlAiGameOptionWidget::MusicSliderChanged(float Value)
 	MuTextBlock->SetText(FText::FromString(FString::FromInt(FMath::RoundToInt(Value * 100)) + FString("%")));
 	//修改音量
 	//SlAiDataHandle::Get()->ResetMenuVolume(Value, -1.f);
-	ChangeVolume.ExecuteIfBound(Value, -1.f);
+	ChangeVolume.ExecuteIfBound(Value, -1.f);//5运行委托
 }
 
 void SSlAiGameOptionWidget::SoundSliderChanged(float Value)
@@ -307,5 +307,5 @@ void SSlAiGameOptionWidget::SoundSliderChanged(float Value)
 	SoTextBlock->SetText(FText::FromString(FString::FromInt(FMath::RoundToInt(Value * 100)) + FString("%")));
 	//修改音量
 	//SlAiDataHandle::Get()->ResetMenuVolume(-1.f, Value);
-	ChangeVolume.ExecuteIfBound(-1.f, Value);
+	ChangeVolume.ExecuteIfBound(-1.f, Value);//5运行委托
 }
