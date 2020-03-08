@@ -22,20 +22,20 @@ public:
 
 
 private:
-	//��UIScaler�ĺ���
+	//绑定UIScaler的函数
 	float GetUIScaler() const;
-	//��ȡ��Ļ�ߴ�
+	//获取屏幕尺寸
 	FVector2D GetViewportSize() const;
 
 
 
 private:
 
-	//��ȡMenu��ʽ
-	const struct FSlAiMenuStyle *MenuStyle;
-	//DPI����ϵ��
+	//获取Menu样式
+	const struct FSlAiMenuStyle *MenuStyle;//指针就是对应编辑器里用蓝图继承于样式的资源
+	//DPI缩放系数
 	TAttribute<float> UIScaler;
-	//�˵�ָ��
+	//菜单指针
 	TSharedPtr<class SSlAiMenuWidget> MenuWidget;
 
 };

@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "SlateBasics.h"
-
+//创建SlAiStyle
 /**
  * 
  */
@@ -23,7 +23,7 @@ public:
 
 private:
 
-	static TSharedRef<class FSlateStyleSet> Create();
+	static TSharedRef<class FSlateStyleSet> Create(); //注册样式
 
 	static TSharedPtr<FSlateStyleSet> SlAiStyleInstance;
 

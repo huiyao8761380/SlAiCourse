@@ -15,9 +15,9 @@
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiMenuHUDWidget::Construct(const FArguments& InArgs)
 {
-	//»ñÈ¡±à¼­Æ÷µÄMenuStyle
+	//è·å–ç¼–è¾‘å™¨çš„MenuStyle
 	MenuStyle = &SlAiStyle::Get().GetWidgetStyle<FSlAiMenuStyle>("BPSlAiMenuStyle");
-	//°ó¶¨Ëõ·Å¹æÔò·½·¨
+	//ç»‘å®šç¼©æ”¾è§„åˆ™æ–¹æ³•
 	UIScaler.Bind(this, &SSlAiMenuHUDWidget::GetUIScaler);
 
 	ChildSlot
@@ -32,7 +32,7 @@ void SSlAiMenuHUDWidget::Construct(const FArguments& InArgs)
 		.VAlign(VAlign_Fill)
 		[
 			SNew(SImage)
-			.Image(&MenuStyle->MenuHUDBackgroundBrush)
+			.Image(&MenuStyle->MenuHUDBackgroundBrush)//åˆ›å»ºMenuStyleHUDåœ¨/Game/UI/Styleè·¯å¾„ï¼ˆSlAiStyleï¼‰
 		]
 
 	+ SOverlay::Slot()

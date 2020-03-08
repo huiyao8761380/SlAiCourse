@@ -8,7 +8,7 @@ class FSlAiCourceModule : public FDefaultGameModuleImpl
 {
 public:
 
-	virtual void StartupModule() override;
+	virtual void StartupModule() override;//看作模组 模组加载时调用
 	virtual void ShutdownModule() override;
 
 };

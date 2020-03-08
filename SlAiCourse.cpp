@@ -10,8 +10,8 @@
 
 void FSlAiCourceModule::StartupModule()
 {
-	//��ʼ����ʽ
-	FSlateStyleRegistry::UnRegisterSlateStyle(SlAiStyle::GetStyleSetName());
+	//初始化样式
+	FSlateStyleRegistry::UnRegisterSlateStyle(SlAiStyle::GetStyleSetName());//SlAiStyle文件里也有取消注册函数 它通过 获取样式名字 来调用 
 	SlAiStyle::Initialze();
 }
 
